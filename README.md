@@ -1,2 +1,2 @@
-# php-mysql-login-system
- 
+# Project: PHP MySQL Login System
+#
