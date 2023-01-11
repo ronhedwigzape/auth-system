@@ -1,52 +1,74 @@
+h1, h2, a, p, label {
+    font-family: 'Montserrat', sans-serif;
+}
+/*Hello World*/
+.tracking-in-expand{animation:tracking-in-expand .7s cubic-bezier(.215,.61,.355,1.000) both}
+@keyframes tracking-in-expand{0%{letter-spacing:-.5em;opacity:0}40%{opacity:.6}100%{opacity:1}}
 
-    /*  Loaders */
-    #preloader {
-        position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        z-index: 9999;
-        overflow: hidden;
-        background: #1a1814;
+.toggle-password-visibility {
+    display: flex;
+
+    /* Border */
+    border: 1px solid #d1d5db;
+    border-radius: 0.25rem;
+    padding: 0.25rem;
+}
+
+.toggle-password-visibility__input {
+    border-color: transparent;
+
+    /* Take available width */
+    flex: 1;
+}
+/*  Loaders */
+#preloader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 9999;
+    overflow: hidden;
+    background: #ffffff;
+}
+
+#preloader:before {
+    content: "";
+    position: fixed;
+    top: calc(50% - 30px);
+    left: calc(50% - 30px);
+    border: 6px solid #f6f6f6;
+    border-top-color: #171717;
+    border-bottom-color: #000000;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    -webkit-animation: animate-preloader 1s linear infinite;
+    animation: animate-preloader 1s linear infinite;
+}
+
+@-webkit-keyframes animate-preloader {
+    0% {
+        transform: rotate(0deg);
     }
 
-    #preloader:before {
-        content: "";
-        position: fixed;
-        top: calc(50% - 30px);
-        left: calc(50% - 30px);
-        border: 6px solid #1a1814;
-        border-top-color: #e0e0e0;
-        border-bottom-color: #cccccc;
-        border-radius: 50%;
-        width: 60px;
-        height: 60px;
-        -webkit-animation: animate-preloader 1s linear infinite;
-        animation: animate-preloader 1s linear infinite;
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes animate-preloader {
+    0% {
+        transform: rotate(0deg);
     }
 
-    @-webkit-keyframes animate-preloader {
-        0% {
-            transform: rotate(0deg);
-        }
-
-        100% {
-            transform: rotate(360deg);
-        }
+    100% {
+        transform: rotate(360deg);
     }
+}
 
-    @keyframes animate-preloader {
-        0% {
-            transform: rotate(0deg);
-        }
-
-        100% {
-            transform: rotate(360deg);
-        }
-    }
-
-.css-button-arrow--green {
+/*Register Button*/
+.register-button {
     min-width: 130px;
     height: 40px;
     color: #fff;
@@ -62,16 +84,16 @@
     border: none;
     background-color: #80ed99
 }
-.css-button-arrow--green:hover {
+.register-button:hover {
     border-radius: 5px;
     padding-right: 24px;
     padding-left:8px;
 }
-.css-button-arrow--green:hover:after {
+.register-button:hover:after {
     opacity: 1;
     right: 10px;
 }
-.css-button-arrow--green:after {
+.register-button:after {
     content: "\00BB";
     position: absolute;
     opacity: 0;
@@ -81,6 +103,45 @@
     right: -20px;
     transition: 0.4s;
 }
+
+/*Login Button*/
+.login-button {
+    min-width: 130px;
+    height: 40px;
+    color: #fff;
+    padding: 5px 10px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    display: inline-block;
+    outline: none;
+    overflow: hidden;
+    border-radius: 5px;
+    border: none;
+    background-color: #343a40
+}
+.login-button:hover {
+    border-radius: 5px;
+    padding-right: 24px;
+    padding-left:8px;
+}
+.login-button:hover:after {
+    opacity: 1;
+    right: 10px;
+}
+.login-button:after {
+    content: "\00BB";
+    position: absolute;
+    opacity: 0;
+    font-size: 20px;
+    line-height: 40px;
+    top: 0;
+    right: -20px;
+    transition: 0.4s;
+}
+
+
 /*.loading {*/
 /*    position: fixed;*/
 /*    top: 0;*/
