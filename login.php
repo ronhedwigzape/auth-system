@@ -1,7 +1,8 @@
 <?php
+
 // Initialize the session
 session_start();
- 
+
 // Check if the user is already logged in, if yes then redirect him to welcome page
 if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
     header("location: welcome.php");
@@ -37,7 +38,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         // Prepare a select statement
         $sql = "SELECT id, username, password FROM users WHERE username = ?";
         
-        if($stmt = $mysqli->prepare($sql)){
+        if($stmt = $conn->prepare($sql)){
             // Bind variables to the prepared statement as parameters
             $stmt->bind_param("s", $param_username);
             
@@ -79,53 +80,58 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             }
 
             // Close statement
-            $stmt->close();
+//            $stmt->close();
         }
     }
-    
+
     // Close connection
-    $mysqli->close();
+//    $mysqli->close();
 }
+require_once 'partials/header.php';
 ?>
- 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Login</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <style>
-        body{ font: 14px sans-serif; }
-        .wrapper{ width: 360px; padding: 20px; }
-    </style>
-</head>
-<body>
-    <div class="wrapper">
-        <h2>Login</h2>
-        <p>Please fill in your credentials to login.</p>
-
-        <?php 
-        if(!empty($login_err)){
-            echo '<div class="alert alert-danger">' . $login_err . '</div>';
-        }        
-        ?>
-
-        <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
-            <div class="form-group">
-                <label>Username</label>
-                <input type="text" name="username" class="form-control <?php echo (!empty($username_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $username; ?>">
-                <span class="invalid-feedback"><?php echo $username_err; ?></span>
-            </div>    
-            <div class="form-group">
-                <label>Password</label>
-                <input type="password" name="password" class="form-control <?php echo (!empty($password_err)) ? 'is-invalid' : ''; ?>">
-                <span class="invalid-feedback"><?php echo $password_err; ?></span>
+<div class="container px-4 py-3 mt-5 h-100"> <!--container-->
+    <div class="row d-flex justify-content-center h-100"> <!--grid-->
+        <div class="col-12 col-sm-10 col-md-7 col-lg-6 col-xl-5 "> <!--column-->
+            <div class="text-black rounded-4"> <!--background-->
+                <div class="p-1 px-5 py-3 text-center rounded-4" style="box-shadow: 1px 3px 12px #888888;"> <!--padding-->
+                    <div class="mb-md-2 mt-md-2"> <!--margin-->
+                        <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
+                            <h2 class="fw-bold my-4 text-uppercase">Login</h2>
+                            <p>Please fill in your credentials to login.</p>
+                            <?php
+                            if(!empty($login_err)){
+                                echo '<div class="alert alert-danger">' . $login_err . '</div>';
+                            }
+                            ?>
+                            <div class="form-floating form-outline form-white mb-3">
+                                <input type="text"
+                                       id="username"
+                                       name="username"
+                                       class="form-control form-control <?php echo (!empty($username_err)) ? 'is-invalid' : ''; ?>"
+                                       value="<?php echo $username; ?>"
+                                       placeholder="Username" autofocus>
+                                <label for="username" class="text-muted">Username</label>
+                                <span class="invalid-feedback"><?php echo $username_err; ?></span>
+                            </div>
+                            <div class="form-floating form-outline form-white mb-3 toggle-password-visibility">
+                                <input type="password"
+                                       id="password"
+                                       name="password"
+                                       class="form-control form-control toggle-password-visibility__input <?php echo (!empty($password_err)) ? 'is-invalid' : ''; ?>"
+                                       placeholder="Password">
+                                <label for="password" class="text-muted">Password</label>
+                                <a type="button" class="toggle-eye text-decoration-none transition pt-3 mt-1 text-dark px-3 fa-solid"><b id="eye" class="fa-eye-slash "></b></a>
+                            </div>
+                            <button class="btn btn-outline-dark btn-md px-5 rounded-5" value="Login" type="submit"><b>Login</b></button>
+                        </form>
+                    </div>
+                    <hr>
+                    <div>
+                        <p class="mb-3 text-muted">Don't have an account? <a href="index.php">Sign up now</a>.</p>
+                    </div>
+                </div>
             </div>
-            <div class="form-group">
-                <input type="submit" class="btn btn-primary" value="Login">
-            </div>
-            <p>Don't have an account? <a href="register.php">Sign up now</a>.</p>
-        </form>
+        </div>
     </div>
-</body>
-</html>
+</div>
+<?php require_once 'partials/footer.php'; ?>
