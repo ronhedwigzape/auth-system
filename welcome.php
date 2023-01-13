@@ -17,4 +17,5 @@ require_once 'partials/header.php';
             <a href="logout.php" class="btn btn-danger ml-3">Sign Out of Your Account</a>
         </p>
     </div>
+
 <?php require_once 'partials/footer.php'; ?>
