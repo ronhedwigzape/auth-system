@@ -37,6 +37,12 @@
                                        placeholder="Confirm Password">
                                 <label for="password" class="text-muted">Confirm Password</label>
                             </div>
+                            <div class="form-check">
+                                <input class="" type="checkbox" value="" id="defaultCheck1" required>
+                                <label class="form-check-label" for="defaultCheck1">
+                                    Accept Terms and Conditions
+                                </label>
+                            </div>
                             <span class="invalid-feedback"><?php echo $confirm_password_err; ?></span>
                             <div class="row container">
                                 <div class="col-6 d-flex align-items-center justify-content-center my-3">
