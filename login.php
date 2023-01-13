@@ -89,18 +89,23 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 }
 require_once 'partials/header.php';
 ?>
+<div class="container">
+    <div class="d-flex justify-content-center mt-5" style=" margin-bottom:5rem;">
+        <h1 class="d-flex justify-content-center text-center tracking-in-expand" style="font-size: 6rem;">Hello World.</h1>
+    </div>
+</div>
 <div class="container px-4 py-3 mt-5 h-100"> <!--container-->
     <div class="row d-flex justify-content-center h-100"> <!--grid-->
         <div class="col-12 col-sm-10 col-md-7 col-lg-6 col-xl-5 "> <!--column-->
             <div class="text-black rounded-4"> <!--background-->
-                <div class="p-1 px-5 py-3 text-center rounded-4" style="box-shadow: 1px 3px 12px #888888;"> <!--padding-->
+                <div class="border p-1 px-5 py-3 text-center rounded-4 shadow-lg"> <!--padding-->
                     <div class="mb-md-2 mt-md-2"> <!--margin-->
                         <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
                             <h2 class="fw-bold my-4 text-uppercase">Login</h2>
                             <p>Please fill in your credentials to login.</p>
                             <?php
                             if(!empty($login_err)){
-                                echo '<div class="alert alert-danger">' . $login_err . '</div>';
+                                echo '<div class="alert alert-danger p-2"><i class="fa-solid fa-triangle-exclamation"></i> ' . $login_err . '</div>';
                             }
                             ?>
                             <div class="form-floating form-outline form-white mb-3">
