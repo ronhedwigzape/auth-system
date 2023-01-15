@@ -1,3 +1,6 @@
+<?php
+
+?>
 <div class="px-2 px-md-4 py-1 py-md-3 h-100" id="register"> <!--register container-->
     <div class="row d-flex justify-content-center h-100"> <!--grid-->
         <div class="col-12 col-sm-10 col-md-7 col-lg-6 col-xl-5 "> <!--column-->
@@ -40,7 +43,7 @@
                             <div class="form-check">
                                 <input class="" type="checkbox" value="" id="defaultCheck1" required>
                                 <label class="form-check-label" for="defaultCheck1">
-                                    Accept Terms and Conditions
+                                    Accept <a href="#" class="text-decoration-none">Terms and Conditions</a>
                                 </label>
                             </div>
                             <span class="invalid-feedback"><?php echo $confirm_password_err; ?></span>
