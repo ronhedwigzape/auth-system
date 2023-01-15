@@ -1,3 +1,5 @@
+<?php
+?>
 <script>
     $(function (){
         var button = $("form .toggle-eye");
@@ -11,15 +13,19 @@
                 p.attr("type", "password");
             }
         }
+
+        $("#show-password").change(function() {
+            if ($(this).is(":checked")) {
+                $("#password1, #password2").attr("type", "text");
+            } else {
+                $("#password1, #password2").attr("type", "password");
+            }
+        });
+
     });
-    function myFunction() {
-        var x = document.getElementById("#password");
-        if (x.type === "password") {
-            x.type = "text";
-        } else {
-            x.type = "password";
-        }
-    }
+
+
+
 </script>
 <script src="assets/js/main.js"></script>
 </body>
