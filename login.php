@@ -75,8 +75,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                             // $_SESSION["id"] = $id;
                             // $_SESSION["username"] = $username;
 
-                            // Set expiration to 7 days
-                            $expiration = time() + (60 * 60 * 24 * 7);
+                            // Set expiration to 3 days
+                            $expiration = time() + (60 * 60 * 24 * 3);
 
                             // Set Cookie for username and id
                             setcookie('username', $username, $expiration, '/');
@@ -119,7 +119,11 @@ require_once 'partials/header.php';
         <h1 class="d-flex justify-content-center text-center tracking-in-expand" style="font-size: 6rem;">Hello World.</h1>
     </div>
 </div>
-<div class="container px-4 py-3 mt-5 h-100"> <!--container-->
+<div class="d-flex justify-content-center form-check form-switch">
+    <input class="form-check-input" type="checkbox" role="switch" id="toggle">
+    <label class="form-check-label ms-3" for="toggle">Switch to Dark Mode</label>
+</div>
+<div class="container px-4 py-3 h-100"> <!--container-->
     <div class="row d-flex justify-content-center h-100"> <!--grid-->
         <div class="col-12 col-sm-10 col-md-7 col-lg-6 col-xl-5 "> <!--column-->
             <div class="text-black rounded-4"> <!--background-->
@@ -152,12 +156,12 @@ require_once 'partials/header.php';
                                 <label for="password" class="text-muted">Password</label>
                                 <a type="button" class="toggle-eye text-decoration-none transition pt-3 mt-1 text-dark px-3 fa-solid"><b id="eye" class="fa-eye-slash "></b></a>
                             </div>
-                            <button class="btn btn-outline-dark btn-md px-5 rounded-5" value="Login" type="submit"><b>Login</b></button>
+                            <button class="btn btn-outline-success btn-md fw-bold px-5 rounded-5" value="Login" type="submit">Login</button>
                         </form>
                     </div>
                     <hr>
                     <div>
-                        <p class="mb-3 text-muted">Don't have an account? <a href="index.php">Sign up now</a>.</p>
+                        <p class="mb-3">Don't have an account? <a class="fw-bold" href="index.php">Sign up now</a>.</p>
                     </div>
                 </div>
             </div>
