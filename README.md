@@ -1,2 +1,2 @@
-# Project: PHP MySQL Login System
+# Project: PHP MySQL Login Authentication System
 #
