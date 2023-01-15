@@ -7,7 +7,7 @@
             <div class="text-black rounded-4"> <!--background-->
                 <div class="border px-3 px-md-5 py-3 text-center rounded-4 shadow-lg"> <!--padding-->
                     <div class="mb-md-2 mt-md-2"> <!--margin-->
-                        <form action="account-creation.php" method="post">
+                        <form class="signup" action="<?= htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
                             <h2 class="fw-bold my-4 text-uppercase">Sign Up</h2>
                             <p>Please fill this form to create an account.</p>
                             <div class="form-floating form-outline form-group form-white mb-3">
@@ -16,7 +16,7 @@
                                        name="username"
                                        class="form-control form-control <?php echo (!empty($username_err)) ? 'is-invalid' : ''; ?>"
                                        value=""
-                                       placeholder="Username">
+                                       placeholder="Username" autofocus>
                                 <label for="username" class="text-muted">Username</label>
                                 <span class="invalid-feedback"><?php echo $username_err; ?></span>
                             </div>
@@ -33,7 +33,7 @@
                             <span class="invalid-feedback"><?php echo $password_err; ?></span>
                             <div class="form-floating form-outline form-group form-white mb-3 toggle-password-visibility">
                                 <input type="password"
-                                       id="password"
+                                       id="confirm_password"
                                        name="confirm_password"
                                        class="form-control form-control toggle-password-visibility__input  <?php echo (!empty($confirm_password_err)) ? 'is-invalid' : ''; ?>"
                                        value=""
