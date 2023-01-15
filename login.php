@@ -72,14 +72,15 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                             
                             // Store data in session variables
                              $_SESSION["loggedin"] = true;
-                             $_SESSION["id"] = $id;
+                            // $_SESSION["id"] = $id;
                             // $_SESSION["username"] = $username;
 
                             // Set expiration to 7 days
                             $expiration = time() + (60 * 60 * 24 * 7);
 
-                            // Set Cookie
+                            // Set Cookie for username and id
                             setcookie('username', $username, $expiration, '/');
+                            setcookie('id', $id, $expiration, '/');
 
                             // Redirect user to welcome page
                             header("location: welcome.php");
@@ -105,6 +106,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     if(isset($_POST['logout'])) {
         setcookie('username', $username, 0, '/');
         session_destroy();
+        $conn->close();
     }
 
     // Close connection
