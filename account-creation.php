@@ -2,8 +2,6 @@
 // Include config file
 require_once "partials/conn.php";
 
-if(isset($_POST)) {
-
 // Define variables and initialize with empty values
     $username = $password = $confirm_password = "";
     $username_err = $password_err = $confirm_password_err = "";
@@ -94,6 +92,5 @@ if(isset($_POST)) {
 
         // Close connection
 //        $mysqli->close();
-    }
 }
 ?>
