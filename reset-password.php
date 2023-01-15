@@ -8,13 +8,13 @@ session_start();
 //    exit;
 //}
 
-echo "<pre>";
-echo var_dump($_COOKIE);
-echo "</pre>";
-
-echo "<pre>";
-echo var_dump($_SESSION);
-echo "</pre>";
+//echo "<pre>";
+//echo var_dump($_COOKIE);
+//echo "</pre>";
+//
+//echo "<pre>";
+//echo var_dump($_SESSION);
+//echo "</pre>";
 
 
 // Check if user is logged in
@@ -63,7 +63,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             
             // Set parameters
             $param_password = password_hash($new_password, PASSWORD_DEFAULT);
-            $param_id = $_SESSION["id"];
+            $param_id = $_COOKIE["id"];
             
             // Attempt to execute the prepared statement
             if($stmt->execute()){
@@ -76,12 +76,12 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             }
 
             // Close statement
-            $stmt->close();
+//            $stmt->close();
         }
     }
     
     // Close connection
-//    $mysqli->close();
+//    $conn->close();
 }
 require_once 'partials/header.php';
 ?>
@@ -92,7 +92,7 @@ require_once 'partials/header.php';
                 <div class="text-black rounded-4"> <!--background-->
                     <div class="p-1 px-5 py-3 text-center rounded-4" style="box-shadow: 1px 3px 12px #888888;"> <!--padding-->
                         <div class="mb-md-2 mt-md-2"> <!--margin-->
-                            <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
+                            <form class="reset" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
                                 <h2 class="fw-bold my-4 text-uppercase">Reset Password</h2>
                                 <p>Please fill out this form to reset your password.</p>
                                 <div class="form-floating form-outline form-white mb-3">
@@ -129,4 +129,23 @@ require_once 'partials/header.php';
             </div>
         </div>
     </div>
-<?php require_once 'partials/footer.php' ?>
+<script>
+    $(document).ready(function(){
+        var password1 = $("#password1");
+        var password2 = $("#password2");
+        var checkbox = $("#show-password");
+
+        checkbox.change(function() {
+            if (checkbox.is(":checked")) {
+                password1.attr("type", "text");
+                password2.attr("type", "text");
+            } else {
+                password1.attr("type", "password");
+                password2.attr("type", "password");
+            }
+        });
+    });
+</script>
+<script src="assets/js/main.js"></script>
+</body>
+</html>
