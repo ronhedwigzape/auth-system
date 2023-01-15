@@ -161,7 +161,7 @@ require_once 'partials/header.php';
                     </div>
                     <hr>
                     <div>
-                        <p class="mb-3">Don't have an account? <a class="fw-bold" href="index.php">Sign up now</a>.</p>
+                        <p class="mb-3">Don't have an account? <a class="fw-bold" href="index.php">Sign up now.</a></p>
                     </div>
                 </div>
             </div>
