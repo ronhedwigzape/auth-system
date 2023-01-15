@@ -3,7 +3,22 @@
 session_start();
  
 // Check if the user is logged in, otherwise redirect to login page
-if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
+//if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
+//    header("location: login.php");
+//    exit;
+//}
+
+echo "<pre>";
+echo var_dump($_COOKIE);
+echo "</pre>";
+
+echo "<pre>";
+echo var_dump($_SESSION);
+echo "</pre>";
+
+
+// Check if user is logged in
+if(!isset($_COOKIE['username'])){
     header("location: login.php");
     exit;
 }
@@ -83,7 +98,7 @@ require_once 'partials/header.php';
                                 <div class="form-floating form-outline form-white mb-3">
                                     <input type="password"
                                            name="new_password"
-                                           id="password"
+                                           id="password1"
                                            class="form-control form-control <?php echo (!empty($new_password_err)) ? 'is-invalid' : ''; ?>"
                                            value="<?php echo $new_password; ?>"
                                            placeholder="Username" autofocus>
@@ -93,15 +108,15 @@ require_once 'partials/header.php';
                                 <div class="form-floating form-outline form-white mb-3">
                                     <input type="password"
                                            name="confirm_password"
-                                           id="password"
+                                           id="password2"
                                            class="form-control form-control <?php echo (!empty($confirm_password_err)) ? 'is-invalid' : ''; ?>"
                                            placeholder="Password">
                                     <label for="password" class="text-muted">Password</label>
                                     <span class="invalid-feedback"><?php echo $confirm_password_err; ?></span>
                                 </div>
                                 <div class="form-check my-4 text-center">
-                                    <input type="checkbox" id="show-pass" class="" onclick="myFunction()">
-                                    <label for="show-pass" class=" p-0">Show Password</label>
+                                    <input type="checkbox" id="show-password" class="">
+                                    <label for="show-password" class=" p-0">Show Password</label>
                                 </div>
                                 <div class="mb-3">
                                 <button class="btn btn-md btn-outline-dark px-4 rounded-5" value="Login" type="submit">Submit</button>
