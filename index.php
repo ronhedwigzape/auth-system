@@ -132,6 +132,10 @@ require_once 'partials/header.php'
     </div>
     <!--    Sign Up Component   -->
     <div class="" style=" margin-bottom: 20rem;" id="register-component">
+        <div class="d-flex justify-content-center form-check form-switch">
+            <input class="form-check-input" type="checkbox" role="switch" id="toggle">
+            <label class="form-check-label ms-3" for="toggle">Switch to Dark Mode</label>
+        </div>
         <?php require_once 'partials/register.php' ?>
     </div>
 </div>
