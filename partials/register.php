@@ -43,7 +43,7 @@
                             <div class="form-check">
                                 <input class="" type="checkbox" value="" id="defaultCheck1" required>
                                 <label for="defaultCheck1">
-                                    <p>Accept <a href="#" class="text-decoration-none text-primary">Terms and Conditions</a></p>
+                                    <p>Accept <b>Terms and Conditions</b></p>
                                 </label>
                             </div>
                             <span class="invalid-feedback"><?php echo $confirm_password_err; ?></span>
@@ -59,7 +59,7 @@
                     </div>
                     <hr>
                     <div>
-                        <p class="mb-3 ">Already have an account? <a class="fw-bold" href="login.php">Login here</a>.</p>
+                        <p class="mb-3">Already have an account? <a class="fw-bold" href="login.php">Login here.</a></p>
                     </div>
                 </div>
             </div>
