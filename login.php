@@ -4,18 +4,29 @@
 session_start();
 
 // Check if the user is already logged in, if yes then redirect him to welcome page
-if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
-    header("location: welcome.php");
-    exit;
-}
- 
+//if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
+//    header("location: welcome.php");
+//    exit;
+//}
+
+//echo "<pre>";
+//echo var_dump($_COOKIE);
+//echo "</pre>";
+//
+//echo "<pre>";
+//echo var_dump($_SESSION);
+//echo "</pre>";
+
 // Include config file
 require_once "partials/conn.php";
  
 // Define variables and initialize with empty values
 $username = $password = "";
 $username_err = $password_err = $login_err = "";
- 
+
+if(isset($_COOKIE['username'])){
+    header("location: welcome.php");
+}
 // Processing form data when form is submitted
 if($_SERVER["REQUEST_METHOD"] == "POST"){
  
@@ -60,10 +71,16 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                             session_start();
                             
                             // Store data in session variables
-                            $_SESSION["loggedin"] = true;
-                            $_SESSION["id"] = $id;
-                            $_SESSION["username"] = $username;                            
-                            
+                             $_SESSION["loggedin"] = true;
+                             $_SESSION["id"] = $id;
+                            // $_SESSION["username"] = $username;
+
+                            // Set expiration to 7 days
+                            $expiration = time() + (60 * 60 * 24 * 7);
+
+                            // Set Cookie
+                            setcookie('username', $username, $expiration, '/');
+
                             // Redirect user to welcome page
                             header("location: welcome.php");
                         } else{
@@ -82,6 +99,12 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             // Close statement
 //            $stmt->close();
         }
+    }
+
+
+    if(isset($_POST['logout'])) {
+        setcookie('username', $username, 0, '/');
+        session_destroy();
     }
 
     // Close connection
