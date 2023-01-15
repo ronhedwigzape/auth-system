@@ -18,6 +18,7 @@ if(isset($_COOKIE['username'])){
 }
 
 if(isset($_POST['logout'])) {
+    $username = $_COOKIE['username'];
     setcookie('username', $username, 0, '/');
     session_destroy();
     $conn->close();
