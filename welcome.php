@@ -27,10 +27,6 @@ require_once 'partials/header.php';
     <div id="preloader"></div>
     <div class="container">
         <h1 class="my-5">Hi, <b><?php echo htmlspecialchars($_COOKIE["username"]); ?></b>. Welcome to our site.</h1>
-        <div class="d-flex justify-content-center form-check form-switch">
-            <input class="form-check-input" type="checkbox" role="switch" id="toggle">
-            <label class="form-check-label ms-3" for="toggle">Switch to Dark Mode</label>
-        </div>
         <p>
             <a href="reset-password.php" class="btn btn-warning">Reset Your Password</a>
             <form action="login.php" method="POST">
