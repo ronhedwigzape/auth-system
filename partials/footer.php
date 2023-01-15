@@ -3,7 +3,7 @@
 <script>
     $(function (){
         var button = $("form .toggle-eye");
-        var p = $("div.form-floating #password");
+        var p = $("#password, #confirm_password");
         button[0].onclick = function (e) {
             e.preventDefault;
             $("#eye").fadeOut(100).fadeIn(700).toggleClass("fa-eye");
@@ -13,19 +13,31 @@
                 p.attr("type", "password");
             }
         }
-
-        $("#show-password").change(function() {
-            if ($(this).is(":checked")) {
-                $("#password1, #password2").attr("type", "text");
-            } else {
-                $("#password1, #password2").attr("type", "password");
-            }
-        });
-
+        // $(".signup").submit(function(event){
+        //     event.preventDefault();
+        //
+        //     let username = $("#username").val();
+        //     let password = $("#password").val();
+        //     let confirm_password = $("#confirm_password").val();
+        //
+        //     $.ajax({
+        //         type: "POST",
+        //         url: "account-creation.php",
+        //         data: {
+        //             username: username,
+        //             password: password,
+        //             confirm_password: confirm_password
+        //         },
+        //         success: function(response) {
+        //             if(response === "success"){
+        //                 alert("Account created successfully!");
+        //             }else{
+        //                 alert("An error occurred, please try again");
+        //             }
+        //         }
+        //     });
+        // });
     });
-
-
-
 </script>
 <script src="assets/js/main.js"></script>
 </body>
