@@ -191,7 +191,7 @@ if(!isset($_COOKIE['username'])){
                         <table id="myTable" class="display table text-center">
                             <thead>
                             <tr>
-                                <th class="text-center">#</th>
+                                <th class="text-center"><i class="fa-solid fa-hashtag"></i></th>
                                 <th class="text-center">First Name</th>
                                 <th class="text-center">Last Name</th>
                                 <th class="text-center">Mobile</th>
