@@ -95,7 +95,7 @@ require_once 'partials/header.php';
                     <div class="p-1 px-5 py-3 text-center rounded-4" style="box-shadow: 1px 3px 12px #888888;"> <!--padding-->
                         <div class="mb-md-2 mt-md-2"> <!--margin-->
                             <form class="reset" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
-                                <h2 class="fw-bold my-4 text-uppercase">Reset Password</h2>
+                                <h2 class="fw-bold my-4 text-uppercase"><i class="fa-solid fa-repeat me-3"></i>Reset Password</h2>
                                 <p>Please fill out this form to reset your password.</p>
                                 <div class="form-floating form-outline form-white mb-3">
                                     <input type="password"
@@ -121,8 +121,8 @@ require_once 'partials/header.php';
                                     <label for="show-password" class=" p-0">Show Password</label>
                                 </div>
                                 <div class="mb-3">
-                                <button class="btn btn-md btn-outline-dark px-4 rounded-5" value="Login" type="submit">Submit</button>
-                                <a class="btn btn-md btn-outline-danger px-4 rounded-5" href="welcome.php">Cancel</a>
+                                <button class="btn btn-md btn-outline-success px-4 rounded-5" value="Login" type="submit"><i class="fa-solid fa-check me-2"></i>Submit</button>
+                                <a class="btn btn-md btn-outline-danger px-4 rounded-5" href="welcome.php"><i class="fa-solid fa-xmark me-2"></i>Cancel</a>
                                 </div>
                             </form>
                         </div>
