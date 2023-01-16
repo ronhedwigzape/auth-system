@@ -18,9 +18,9 @@ if(isset($_COOKIE['username'])){
 }
 
 if(isset($_POST['logout'])) {
-    setcookie('username', $username, 0, '/');
-    setcookie('id', $id, 0, '/');
-    setcookie('reset_pass_status', $reset_status, 0, '/');
+    setcookie('username', '', 0, '/');
+    setcookie('id', '', 0, '/');
+    setcookie('reset_pass_status', '', 0, '/');
     $conn->close();
     session_destroy();
     session_abort();
@@ -131,8 +131,8 @@ require_once 'partials/header.php'
 <div class="container">
 
     <!--    Header    -->
-    <div class="d-flex justify-content-center mt-5" style=" margin-bottom:5rem;">
-        <h1 class="d-flex justify-content-center text-center tracking-in-expand" style="font-size: 6rem;">Hello World.</h1>
+    <div class="d-flex justify-content-center mt-5" style=" margin-bottom:3rem;">
+        <h1 class="d-flex justify-content-center text-center fw-bolder text-shadow-drop-bottom" style="font-size: 6rem;"><i class="fa-solid fa-user-secret me-4"></i> Auth</h1>
     </div>
 
     <!--      Dark Mode Toggle Switch     -->
@@ -211,25 +211,4 @@ require_once 'partials/header.php'
     </div>
 
 </div>
-<script src="https://unpkg.com/jquery-cookie-bubble@1.0.0/dist/cookieBubble.min.js"/>
-<script>
-    //---------------Code-for-Cookie-Bubble-JS-----------------//
-    // Source: https://github.com/CookieBubble/jquery-cookie-bubble
-    (function($){
-        $.cookieBubble(
-            {
-                messageTextColor:'rgb(44,88,162)',
-                buttonText:'Got It',
-                messageFontSize:'15',
-                iconColor:'rgba(166, 118, 72, 1)',
-                buttonColor:'rgba(0, 0, 0, 1)',
-                iconVisibility:true,
-                cookiePolicyButtonText:'Read our cookie Policy',
-                cookiePolicyButtonUrl:'http://allaboutcookies.org',
-                cookiePolicyButtonTarget:'_blank',
-                boxPosition:'bottom-left',
-                messageText:'We use cookies to personalize your experience. By continuing to visit this website you agree to our use of cookies.',
-            });
-    })(jQuery);
-</script>
 <?php require_once 'partials/footer.php'; ?>
