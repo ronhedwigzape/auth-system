@@ -1,3 +1,4 @@
+// Pre loader function
 $(function () {
     let preloader = $('#preloader');
     if (preloader.length) {
