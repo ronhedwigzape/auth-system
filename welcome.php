@@ -25,19 +25,21 @@ if(!isset($_COOKIE['username'])){
     header("location: login.php");
     exit;
 }
-require_once 'partials/header.php';
+    require_once 'partials/header.php';
 ?>
+<body>
 <div id="preloader"></div>
 <header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
-    <h2 class="navbar-brand col-md-2 col-lg-2 me-0 px-3 pt-3"><i class="fa-solid fa-user-tie me-2"></i> Authentication System</h2>
-    <button class="navbar-toggler position-fixed d-md-none collapsed" style="top: 6%;" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
+    <div class="img-fluid"><h2 class="navbar-brand col-md-2 col-lg-2 me-0 px-3 pt-3"><i class="fa-solid fa-user-secret me-2"></i> Authentication System</h2></div>
+
+    <button class="navbar-toggler position-relative d-md-none collapsed me-3 me-" style="top: 5%;" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
-    <input class="form-control form-control-dark w-100 rounded-0 border-0 mt-5 mt-md-0 mt-lg-0" type="text" placeholder="Search" aria-label="Search">
+    <input class="form-control form-control-dark w-100 rounded-0 border-0 ms-lg-4 mt-2 mx-2 mt-md-0 mt-lg-0" type="text" placeholder="Search" aria-label="Search">
     <div class="navbar-nav">
         <div class="nav-item text-nowrap">
             <form action="login.php" method="POST">
-                <button type="submit" href="login.php" name="logout" class="btn btn-dark"><i class="fa-solid fa-right-from-bracket"></i> Sign Out</button>
+                <button type="submit" href="login.php" name="logout" class="btn btn-dark ms-2 ms-md-0 ms-lg-0 my-1 my-md-0 my-lg-0"><i class="fa-solid fa-right-from-bracket"></i> Sign Out</button>
             </form>
         </div>
     </div>
@@ -118,8 +120,8 @@ require_once 'partials/header.php';
             <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
                 <h1 class="my-3">Hi, <b><?php echo htmlspecialchars($_COOKIE["username"]); ?></b>. Welcome to our site.</h1>
                 <div class="btn-toolbar mb-2 mb-md-0">
-                    <div class="btn-group me-2">
-                        <a href="reset-password.php" class="btn btn-sm btn-outline-warning"><i class="fa-solid fa-power-off" style="font-size: 12px;"></i> Reset Your Password</a>
+                    <div class="btn-group me-2 mb-0 mb-md-3 mb-lg-0">
+                        <a href="reset-password.php" class="btn btn-sm btn-outline-warning"><i class="fa-solid fa-repeat me-1"></i> Reset Your Password</a>
                         <button type="button" class="btn btn-sm btn-outline-secondary">Share</button>
                         <button type="button" class="btn btn-sm btn-outline-secondary">Export</button>
                     </div>
@@ -149,7 +151,7 @@ require_once 'partials/header.php';
                     <div class="m-auto">
                         <!-- Add New Button trigger modal -->
                         <button type="button" class="btn btn-primary rounded-5 mt-1 mb-4" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-                            Add New Data
+                            <i class="fa-solid fa-user-plus me-2"></i>Add New Data
                         </button>
 
                         <!-- Modal -->
@@ -157,7 +159,7 @@ require_once 'partials/header.php';
                             <div class="modal-dialog modal-dialog-centered">
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                        <h1 class="modal-title fs-5" id="staticBackdropLabel">Add your data</h1>
+                                        <h1 class="modal-title fs-5" id="staticBackdropLabel"><i class="fa-solid fa-user-secret me-2"></i>Add your data</h1>
                                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                     </div>
                                     <form action="insert-data.php" class="record" method="post">
@@ -177,8 +179,8 @@ require_once 'partials/header.php';
                                             </div>
                                         </div>
                                         <div class="modal-footer">
-                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                            <button class="btn btn-success" type="submit">Add</button>
+                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"><i class="fa-solid fa-circle-xmark me-2"></i>Close</button>
+                                            <button class="btn btn-success" type="submit"><i class="fa-solid fa-user-plus me-2"></i>Add</button>
                                         </div>
                                     </form>
                                 </div>
@@ -198,17 +200,17 @@ require_once 'partials/header.php';
                             </thead>
                             <tbody>
                             <?php
-                            $no =  1 ;
+                            $num =  1 ;
                             $data = mysqli_query($conn, "SELECT * FROM persons");
                             while($row = mysqli_fetch_array($data)){ ?>
                                 <tr>
-                                    <td><?= $no; ?></td>
+                                    <td><?= $num; ?></td>
                                     <td><?= $row['person_firstname']; ?></td>
                                     <td><?= $row['person_lastname']; ?></td>
                                     <td><?= $row['person_mobile']; ?></td>
                                     <td>
-                                        <a type="button" id="delete" class="btn btn-outline-danger" href="delete-data.php?id=<?= $row['person_id']?>">Delete</a>
-                                        <a type="button" class="btn btn-outline-info ms-3" data-bs-toggle="modal" data-bs-target="#editData<?= $row['person_id']?>">Edit</a>
+                                        <a type="button" id="delete" class="btn btn-outline-danger" href="delete-data.php?id=<?= $row['person_id']?>"><i class="fa-solid fa-trash me-2"></i>Delete</a>
+                                        <a type="button" class="btn btn-outline-info ms-3" data-bs-toggle="modal" data-bs-target="#editData<?= $row['person_id']?>"><i class="fa-solid fa-pen-to-square me-2"></i>Edit</a>
                                     </td>
                                 </tr>
                                 <!-- Modal -->
@@ -216,7 +218,7 @@ require_once 'partials/header.php';
                                     <div class="modal-dialog modal-dialog-centered">
                                         <div class="modal-content">
                                             <div class="modal-header">
-                                                <h1 class="modal-title fs-5" id="staticBackdropLabel">Update <?= $row['person_firstname']?>'s data</h1>
+                                                <h1 class="modal-title fs-5" id="staticBackdropLabel"><i class="fa-solid fa-user-secret me-2"></i>Update <?= $row['person_firstname']?>'s data</h1>
                                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                             </div>
                                             <form action="update-data.php" method="post">
@@ -237,14 +239,14 @@ require_once 'partials/header.php';
                                                     </div>
                                                 </div>
                                                 <div class="modal-footer">
-                                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                                    <button class="btn btn-success" type="submit">Update</button>
+                                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"><i class="fa-solid fa-circle-xmark me-2"></i>Close</button>
+                                                    <button class="btn btn-success" type="submit"><i class="fa-regular fa-pen-to-square me-2"></i>Update</button>
                                                 </div>
                                             </form>
                                         </div>
                                     </div>
                                 </div>
-                                <?php $no++; } ?>
+                                <?php $num++; } ?>
                             </tbody>
                         </table>
                     </div>
@@ -253,5 +255,25 @@ require_once 'partials/header.php';
         </main>
     </div>
 </div>
-
+<script src="https://unpkg.com/jquery-cookie-bubble@1.0.0/dist/cookieBubble.min.js"></script>
+<script>
+    //---------------Code-for-Cookie-Bubble-JS-----------------//
+    // Source: https://github.com/CookieBubble/jquery-cookie-bubble
+    (function($){
+        $.cookieBubble(
+            {
+                messageTextColor:'rgb(44,88,162)',
+                buttonText:'Got It',
+                messageFontSize:'15',
+                iconColor:'rgba(166, 118, 72, 1)',
+                buttonColor:'rgba(0, 0, 0, 1)',
+                iconVisibility:true,
+                cookiePolicyButtonText:'Read our cookie Policy',
+                cookiePolicyButtonUrl:'http://allaboutcookies.org',
+                cookiePolicyButtonTarget:'_blank',
+                boxPosition:'bottom-left',
+                messageText:'We use cookies to personalize your experience. By continuing to visit this website you agree to our use of cookies.',
+            });
+    })(jQuery);
+</script>
 <?php require_once 'partials/footer.php'; ?>
