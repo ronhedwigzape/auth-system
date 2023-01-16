@@ -67,10 +67,11 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             
             // Attempt to execute the prepared statement
             if($stmt->execute()){
-                // Password updated successfully. Destroy the session, and redirect to login page
-                session_destroy();
-                header("location: login.php");
-                exit();
+                // Password updated successfully.
+//                session_destroy();
+                $expiration = time() + 5;
+                setcookie('reset_pass_status','success', $expiration, '/');
+                header("location: welcome.php");
             } else{
                 echo "Oops! Something went wrong. Please try again later.";
             }
@@ -85,11 +86,12 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 }
 require_once 'partials/header.php';
 ?>
+<body style="background: #e7e7e7;">
 <div id="preloader"></div>
     <div class="container px-4 py-3 mt-5 h-100"> <!--container-->
         <div class="row d-flex justify-content-center h-100"> <!--grid-->
             <div class="col-12 col-sm-10 col-md-7 col-lg-6 col-xl-5 "> <!--column-->
-                <div class="text-black rounded-4"> <!--background-->
+                <div class="bg-white text-black rounded-4"> <!--background-->
                     <div class="p-1 px-5 py-3 text-center rounded-4" style="box-shadow: 1px 3px 12px #888888;"> <!--padding-->
                         <div class="mb-md-2 mt-md-2"> <!--margin-->
                             <form class="reset" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
