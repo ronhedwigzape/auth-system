@@ -105,8 +105,11 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
     if(isset($_POST['logout'])) {
         setcookie('username', $username, 0, '/');
-        session_destroy();
+        setcookie('id', $id, 0, '/');
+        setcookie('reset_pass_status', $reset_status, 0, '/');
         $conn->close();
+        session_destroy();
+        session_abort();
     }
 
     // Close connection
