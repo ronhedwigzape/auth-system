@@ -148,7 +148,7 @@ require_once 'partials/header.php';
                 <div>
                     <div class="m-auto">
                         <!-- Add New Button trigger modal -->
-                        <button type="button" class="btn btn-success rounded-5 my-4" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                        <button type="button" class="btn btn-primary rounded-5 mt-1 mb-4" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
                             Add New Data
                         </button>
 
@@ -162,6 +162,7 @@ require_once 'partials/header.php';
                                     </div>
                                     <form action="insert-data.php" class="record" method="post">
                                         <div class="modal-body">
+                                            <p class="mb-4">Please ensure that all information is accurately filled out.</p>
                                             <div class="form-floating mb-3">
                                                 <input type="text" name="firstname" class="form-control" id="first-name" placeholder="Your First Name" autofocus>
                                                 <label for="first-name" class="form-label">First Name</label>
@@ -220,6 +221,7 @@ require_once 'partials/header.php';
                                             </div>
                                             <form action="update-data.php" method="post">
                                                 <div class="modal-body">
+                                                    <p class="mb-4">Please ensure that you are correctly updating the specific information.</p>
                                                     <div class="form-floating mb-3">
                                                         <input type="hidden" name="id" value="<?= $row['person_id']?>">
                                                         <input type="text" name="firstname" class="form-control" value="<?= $row['person_firstname']?>" placeholder="Your First Name">
