@@ -29,11 +29,11 @@ require_once 'partials/header.php';
 ?>
 <div id="preloader"></div>
 <header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
-    <h1 class="navbar-brand col-md-3 col-lg-2 me-0 px-3 fs-6 pt-3">Authentication System</h1>
-    <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
+    <h2 class="navbar-brand col-md-2 col-lg-2 me-0 px-3 pt-3"><i class="fa-solid fa-user-tie me-2"></i> Authentication System</h2>
+    <button class="navbar-toggler position-fixed d-md-none collapsed" style="top: 6%;" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
-    <input class="form-control form-control-dark w-100 rounded-0 border-0" type="text" placeholder="Search" aria-label="Search">
+    <input class="form-control form-control-dark w-100 rounded-0 border-0 mt-5 mt-md-0 mt-lg-0" type="text" placeholder="Search" aria-label="Search">
     <div class="navbar-nav">
         <div class="nav-item text-nowrap">
             <form action="login.php" method="POST">
@@ -145,7 +145,7 @@ require_once 'partials/header.php';
                     </div>
                 </div>
                 <?php } ?>
-                <div class="mt-3">
+                <div>
                     <div class="m-auto">
                         <!-- Add New Button trigger modal -->
                         <button type="button" class="btn btn-success rounded-5 my-4" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
