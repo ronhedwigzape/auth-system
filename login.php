@@ -104,9 +104,9 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
 
     if(isset($_POST['logout'])) {
-        setcookie('username', $username, 0, '/');
-        setcookie('id', $id, 0, '/');
-        setcookie('reset_pass_status', $reset_status, 0, '/');
+        setcookie('username', '', 0, '/');
+        setcookie('id', '', 0, '/');
+        setcookie('reset_pass_status', '', 0, '/');
         $conn->close();
         session_destroy();
         session_abort();
@@ -118,8 +118,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 require_once 'partials/header.php';
 ?>
 <div class="container">
-    <div class="d-flex justify-content-center mt-5" style=" margin-bottom:5rem;">
-        <h1 class="d-flex justify-content-center text-center tracking-in-expand" style="font-size: 6rem;">Hello World.</h1>
+    <div class="d-flex justify-content-center mt-5" style=" margin-bottom:3rem;">
+        <h1 class="d-flex justify-content-center text-center fw-bolder text-shadow-drop-bottom" style="font-size: 6rem;"><i class="fa-solid fa-user-secret me-4"></i> Auth</h1>
     </div>
 </div>
 <div class="d-flex justify-content-center form-check form-switch">
