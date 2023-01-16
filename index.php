@@ -18,10 +18,12 @@ if(isset($_COOKIE['username'])){
 }
 
 if(isset($_POST['logout'])) {
-    $username = $_COOKIE['username'];
     setcookie('username', $username, 0, '/');
-    session_destroy();
+    setcookie('id', $id, 0, '/');
+    setcookie('reset_pass_status', $reset_status, 0, '/');
     $conn->close();
+    session_destroy();
+    session_abort();
 }
 
 // Include config file
@@ -127,16 +129,43 @@ require_once 'partials/header.php'
 <div id="preloader"></div>
 <!--    Main Content    -->
 <div class="container">
+
+    <!--    Header    -->
     <div class="d-flex justify-content-center mt-5" style=" margin-bottom:5rem;">
         <h1 class="d-flex justify-content-center text-center tracking-in-expand" style="font-size: 6rem;">Hello World.</h1>
     </div>
+
+    <!--      Dark Mode Toggle Switch     -->
+    <div class="d-flex justify-content-center form-check form-switch">
+        <input class="form-check-input" type="checkbox" role="switch" id="toggle">
+        <label class="form-check-label ms-3" for="toggle">Switch to Dark Mode</label>
+    </div>
+
     <!--    Sign Up Component   -->
-    <div class="" style=" margin-bottom: 20rem;" id="register-component">
-        <div class="d-flex justify-content-center form-check form-switch">
-            <input class="form-check-input" type="checkbox" role="switch" id="toggle">
-            <label class="form-check-label ms-3" for="toggle">Switch to Dark Mode</label>
-        </div>
+    <div class="" id="register-component">
         <?php require_once 'partials/register.php' ?>
     </div>
+
 </div>
+<script src="https://unpkg.com/jquery-cookie-bubble@1.0.0/dist/cookieBubble.min.js"/>
+<script>
+    //---------------Code-for-Cookie-Bubble-JS-----------------//
+    // Source: https://github.com/CookieBubble/jquery-cookie-bubble
+    (function($){
+        $.cookieBubble(
+            {
+                messageTextColor:'rgb(44,88,162)',
+                buttonText:'Got It',
+                messageFontSize:'15',
+                iconColor:'rgba(166, 118, 72, 1)',
+                buttonColor:'rgba(0, 0, 0, 1)',
+                iconVisibility:true,
+                cookiePolicyButtonText:'Read our cookie Policy',
+                cookiePolicyButtonUrl:'http://allaboutcookies.org',
+                cookiePolicyButtonTarget:'_blank',
+                boxPosition:'bottom-left',
+                messageText:'We use cookies to personalize your experience. By continuing to visit this website you agree to our use of cookies.',
+            });
+    })(jQuery);
+</script>
 <?php require_once 'partials/footer.php'; ?>
